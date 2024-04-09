@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Post from './components/post/Post';
+import Edit from './components/post/Edit';
+import Create from './components/post/Create';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <div className={'container'}>
+        <Routes>
+          <Route path={"/"} Component={Home} />
+          <Route path={"/post/:postId"} Component={Post} />
+          <Route path={"/edit/:postId"} Component={Edit} />
+          <Route path={"/create"} Component={Create} />
+        </Routes>
+      </div>
     </div>
   );
 }
-
 export default App;
